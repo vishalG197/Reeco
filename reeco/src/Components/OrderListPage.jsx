@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router for navigation
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setOrders } from '../Redux/ordersSlice'; // Adjust the import path based on your project structure
 import mockData from '../Utils/data';
 
 const OrderListPage = () => {
+  const dispatch = useDispatch();
+  const orders = useSelector((state) => state.orders.orders);
+console.log(orders);
+  // useEffect(() => {
+  //   // Dispatch an action to set the orders in the store
+  //   dispatch(setOrders(mockData.orders));
+  // }, [dispatch]);
+
   return (
     <OrderDiv>
-      <div className='order'>
-         Orders
+      <div className="order">Orders</div>
+      <div className="search">
+        <span role="img" aria-label="Search">🔍</span>
+        <input type="text" placeholder="Search..." />
       </div>
-      <div className="search">🔍<input type="text" placeholder="Search..." /></div>
       <div className="container">
         <table className="order-table">
           <thead>
@@ -22,7 +33,7 @@ const OrderListPage = () => {
             </tr>
           </thead>
           <tbody>
-            {mockData.orders.map(order => (
+            {orders?.map((order) => (
               <tr key={order.id}>
                 <td>{order.id}</td>
                 <td>{order.supplier}</td>
@@ -37,25 +48,25 @@ const OrderListPage = () => {
         </table>
       </div>
     </OrderDiv>
-  )
-}
+  );
+};
 
 export default OrderListPage;
 
-const OrderDiv = styled.div `
+const OrderDiv = styled.div`
   // Add your global styles here
-  
+
   .order {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
   }
-  
+
   .search {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    
+
     input {
       margin-left: 10px;
       padding: 5px;
@@ -63,24 +74,25 @@ const OrderDiv = styled.div `
       border-radius: 3px;
     }
   }
-  
+
   .container {
     // Add container styles
-    
+
     .order-table {
       width: 100%;
       border-collapse: collapse;
-      
-      th, td {
+
+      th,
+      td {
         border: 1px solid #ddd;
         padding: 8px;
         text-align: left;
       }
-      
+
       th {
         background-color: #f2f2f2;
       }
-      
+
       td {
         a {
           text-decoration: none;
@@ -89,4 +101,4 @@ const OrderDiv = styled.div `
       }
     }
   }
-`
+`;

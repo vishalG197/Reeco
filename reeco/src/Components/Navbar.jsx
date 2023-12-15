@@ -1,6 +1,7 @@
 // components/Navbar.js
 import React from 'react';
-import styled from "styled-component"
+import { Link } from 'react-router-dom';
+import styled from "styled-components"
 const Navbar = () => {
   return (
     <NavDiv>
@@ -9,18 +10,20 @@ const Navbar = () => {
           <h1>Reeco</h1>
         </div>
         <div className="nav-links">
-          <a href="/">Store</a>
-          <a href="/orders">Orders</a>
-          <a href="/analytics">Analytics</a>
+          <Link to="/">Store</Link>
+          </div><div className="nav-links">
+          <Link to="/orders">Orders</Link>
+          </div><div className="nav-links">
+          <Link to="/">Analytics</Link>
         </div>
-        <div>
+        
          <div className="cart">
          🛒
          </div>
          <div className="user">
            Hello,Vishal
          </div>
-        </div>
+        
       </div>
     </NavDiv>
   );
@@ -29,20 +32,23 @@ const Navbar = () => {
 export default Navbar;
 
 const NavDiv = styled.div`
-background-color:green;
+/* background-color:green;
+ */
+
   .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #333; /* Adjust color as needed */
+    font-size:25px;
+    padding: 20px;
+    background-color: #026c0adf; /* Adjust color as needed */
     color: white; /* Adjust color as needed */
   }
 
   .logo {
     h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 

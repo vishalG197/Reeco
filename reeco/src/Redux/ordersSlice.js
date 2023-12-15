@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import mockData from '../Utils/data';
 const initialState = {
-  orders: [], // Initial state, can be populated with data from an API or a mock file
+  orders: mockData.orders, // Initial state, can be populated with data from an API or a mock file
 };
 
 const orderSlice = createSlice({
@@ -29,9 +29,13 @@ const orderSlice = createSlice({
 
       state.orders[orderIndex].products[productIndex].status = `Missing${urgent ? ' - Urgent' : ''}`;
     },
+    setOrders: (state, action) => {
+      console.log(action.payload)
+      state.orders = action.payload;
+    },
     // Add other actions as needed
   },
 });
 
-export const { updateProduct, markProductMissing } = orderSlice.actions;
+export const { updateProduct, markProductMissing ,setOrders} = orderSlice.actions;
 export default orderSlice.reducer;

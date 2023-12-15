@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 const MissingPopup = ({ onClose, onMarkMissing }) => {
   const [urgent, setUrgent] = useState(false);
 
@@ -9,6 +8,7 @@ const MissingPopup = ({ onClose, onMarkMissing }) => {
     onMarkMissing(urgent);
     onClose();
   };
+
 
   return (
     <PopupOverlay>

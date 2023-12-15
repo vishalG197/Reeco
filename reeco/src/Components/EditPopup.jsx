@@ -11,7 +11,7 @@ const EditPopup = ({ onClose, onUpdate }) => {
     onUpdate({
       price: editedPrice,
       quantity: editedQuantity,
-      reason: selectedReason,
+      comment: selectedReason, // Save the selected reason as a comment
     });
     onClose();
   };
