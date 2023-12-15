@@ -1,7 +1,6 @@
-// components/Navbar.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from "styled-components"
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 const Navbar = () => {
   return (
     <NavDiv>
@@ -11,19 +10,16 @@ const Navbar = () => {
         </div>
         <div className="nav-links">
           <Link to="/">Store</Link>
-          </div><div className="nav-links">
+        </div>
+        <div className="nav-links">
           <Link to="/orders">Orders</Link>
-          </div><div className="nav-links">
+        </div>
+        <div className="nav-links">
           <Link to="/">Analytics</Link>
         </div>
-        
-         <div className="cart">
-         🛒
-         </div>
-         <div className="user">
-           Hello,Vishal
-         </div>
-        
+
+        <div className="cart">🛒</div>
+        <div className="user">Hello,Vishal</div>
       </div>
     </NavDiv>
   );
@@ -32,14 +28,14 @@ const Navbar = () => {
 export default Navbar;
 
 const NavDiv = styled.div`
-/* background-color:green;
+  /* background-color:green;
  */
 
   .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size:25px;
+    font-size: 25px;
     padding: 20px;
     background-color: #026c0adf; /* Adjust color as needed */
     color: white; /* Adjust color as needed */

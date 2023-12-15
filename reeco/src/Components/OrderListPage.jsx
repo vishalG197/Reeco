@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setOrders } from '../Redux/ordersSlice'; // Adjust the import path based on your project structure
+import { setOrders } from '../Redux/ordersSlice'; 
 import mockData from '../Utils/data';
 
 const OrderListPage = () => {

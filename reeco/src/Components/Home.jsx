@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Home = () => {
   return (
@@ -8,8 +8,9 @@ const Home = () => {
         <h1>Welcome to Reeco</h1>
       </div>
       <div className="main-content">
-         
-        <p className="intro-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p className="intro-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
         <button className="cta-button">Get Started</button>
       </div>
       <div className="footer">
@@ -20,13 +21,10 @@ const Home = () => {
 };
 
 const StyledHomePage = styled.div`
-  /* Styles for the entire homepage */
-
   background-color: #f2f2f2;
   padding: 20px;
-
+  height: 80vh;
   .header {
-    /* Styles for the header section */
     text-align: center;
     margin-bottom: 20px;
 
@@ -37,13 +35,14 @@ const StyledHomePage = styled.div`
   }
 
   .main-content {
-    /* Styles for the main content section */
     text-align: center;
+    align-items: center;
 
     .intro-text {
       font-size: 18px;
       color: #555;
-      margin-bottom: 20px;
+      /* margin-bottom: 20px; */
+      margin: auto;
     }
 
     .cta-button {
@@ -54,11 +53,11 @@ const StyledHomePage = styled.div`
       cursor: pointer;
       border: none;
       border-radius: 4px;
+      margin-top: 50px;
     }
   }
 
   .footer {
-    /* Styles for the footer section */
     text-align: center;
     margin-top: 20px;
     color: #777;

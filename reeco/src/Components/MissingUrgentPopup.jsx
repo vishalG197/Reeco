@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 const MissingPopup = ({ onClose, onMarkMissing }) => {
   const [urgent, setUrgent] = useState(false);
 
   const handleMarkMissing = () => {
-    // Add logic to mark product as missing or missing-urgent
     onMarkMissing(urgent);
     onClose();
   };
-
 
   return (
     <PopupOverlay>

@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 
 const EditPopup = ({ onClose, onUpdate }) => {
-  const [editedPrice, setEditedPrice] = useState('');
-  const [editedQuantity, setEditedQuantity] = useState('');
-  const [selectedReason, setSelectedReason] = useState('');
+  const [editedPrice, setEditedPrice] = useState("");
+  const [editedQuantity, setEditedQuantity] = useState("");
+  const [selectedReason, setSelectedReason] = useState("");
 
   const handleUpdate = () => {
-    // Add validation and update logic
     onUpdate({
       price: editedPrice,
       quantity: editedQuantity,
-      comment: selectedReason, // Save the selected reason as a comment
+      comment: selectedReason,
     });
     onClose();
   };

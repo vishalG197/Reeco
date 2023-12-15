@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { updateProduct, markProductMissing } from '../Redux/ordersSlice'; 
-import mockData from '../Utils/data';
-import EditPopup from './EditPopup';
-import MissingPopup from './MissingUrgentPopup';
-import img from "../images/Apple.png"
+import React, { useState } from "react";
+import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { updateProduct, markProductMissing } from "../Redux/ordersSlice";
+import EditPopup from "./EditPopup";
+import MissingPopup from "./MissingUrgentPopup";
+import img from "../images/Apple.png";
 const MainOrderPage = () => {
   const dispatch = useDispatch();
-  const order = useSelector((state) => state.orders.orders[0]); // Assuming you are displaying details for the first order
-  console.log(order)
+  const order = useSelector((state) => state.orders.orders[0]); 
+  console.log(order);
   const [showEditPopup, setShowEditPopup] = useState(null);
   const [showMissingPopup, setShowMissingPopup] = useState(null);
 
@@ -21,19 +20,26 @@ const MainOrderPage = () => {
     setShowEditPopup(productId);
   };
   const handleMarkMissingProduct = (productId, urgent) => {
-    const status = urgent ? 'Missing – Urgent' : 'Missing';
-    dispatch(updateProduct({ orderId: order.id, productId, updates: { status } }));
+    const status = urgent ? "Missing – Urgent" : "Missing";
+    dispatch(
+      updateProduct({ orderId: order.id, productId, updates: { status } })
+    );
     setShowMissingPopup(null);
   };
 
   const handleUpdateProduct = (productId, updates) => {
-    // Logic to update the product
-    // Dispatch the updateProduct action
+   
     dispatch(updateProduct({ orderId: order.id, productId, updates }));
     setShowEditPopup(null);
   };
   const handleApprove = (productId) => {
-    dispatch(updateProduct({ orderId: order.id, productId, updates: { status: 'Approved' } }));
+    dispatch(
+      updateProduct({
+        orderId: order.id,
+        productId,
+        updates: { status: "Approved" },
+      })
+    );
   };
   return (
     <MainOrderDiv>
@@ -71,61 +77,97 @@ const MainOrderPage = () => {
             {order.products?.map((product) => (
               <tr key={product.id}>
                 <td>
-                  <img src={img} alt={"Apple"} style={{ width: '50px', height: '50px' }} />
+                  <img
+                    src={img}
+                    alt={"Apple"}
+                    style={{ width: "50px", height: "50px" }}
+                  />
                 </td>
                 <td>{product.productName}</td>
                 <td>{product.brand}</td>
                 <td>{product.price}</td>
                 <td>{product.quantity}</td>
                 <td>{product.total}</td>
-                <td >
-                  <button style={{ backgroundColor: product.status === 'Approved' ? 'green' :
-                product.status === 'Missing'?"#db3b3b" :
-                product.status === 'Missing – Urgent'?"red":'white',
-                fontSize:"20px",
-                fontWeight:"bold",
-                color:product.status === 'Approved' ? 'white' :
-                product.status === 'Missing'?"white" :
-                product.status === 'Missing – Urgent'?"white":'black',
-                 padding:'10px',
-                 borderRadius:"10px"
-                }}> {product.status}</button>
-                 
+                <td>
+                  <button
+                    style={{
+                      backgroundColor:
+                        product.status === "Approved"
+                          ? "green"
+                          : product.status === "Missing"
+                          ? "#db3b3b"
+                          : product.status === "Missing – Urgent"
+                          ? "red"
+                          : "white",
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      color:
+                        product.status === "Approved"
+                          ? "white"
+                          : product.status === "Missing"
+                          ? "white"
+                          : product.status === "Missing – Urgent"
+                          ? "white"
+                          : "black",
+                      padding: "10px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {" "}
+                    {product.status}
+                  </button>
                 </td>
                 <td>
-                  <button onClick={() => handleApprove(product.id)}
-                  style={{ backgroundColor: product.status === 'Approved' ? 'green' 
-                  :'white',
-                  fontSize:"20px",
-                  fontWeight:"bold",
-                  color:product.status === 'Approved' ? 'white':'black',
-                   padding:'10px',
-                   borderRadius:"10px"
-                  }}
-                  
-                  >✓</button>
-                  <button onClick={() => handleMarkMissingPopup(product.id, false)}
-                  style={{ backgroundColor: 
-                  product.status === 'Missing'?"#db3b3b" :
-                  product.status === 'Missing – Urgent'?"red":'white',
-                  fontSize:"20px",
-                  fontWeight:"bold",
-                  color:
-                  product.status === 'Missing'?"white" :
-                  product.status === 'Missing – Urgent'?"white":'black',
-                   padding:'10px',
-                   borderRadius:"10px"
-                  }}
-                  >X</button>
+                  <button
+                    onClick={() => handleApprove(product.id)}
+                    style={{
+                      backgroundColor:
+                        product.status === "Approved" ? "green" : "white",
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      color: product.status === "Approved" ? "white" : "black",
+                      padding: "10px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    ✓
+                  </button>
+                  <button
+                    onClick={() => handleMarkMissingPopup(product.id, false)}
+                    style={{
+                      backgroundColor:
+                        product.status === "Missing"
+                          ? "#db3b3b"
+                          : product.status === "Missing – Urgent"
+                          ? "red"
+                          : "white",
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      color:
+                        product.status === "Missing"
+                          ? "white"
+                          : product.status === "Missing – Urgent"
+                          ? "white"
+                          : "black",
+                      padding: "10px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    X
+                  </button>
                   {/* <button onClick={() => handleMarkMissingPopup(product.id, true)}>X </button> */}
-                  <button onClick={() => handleEdit(product.id)}
-                     style={{ 
-                      backgroundColor:"white",
-                      fontSize:"20px",
-                      fontWeight:"bold",
-                      padding:'10px',
-                     borderRadius:"10px"}}
-                  >Edit</button>
+                  <button
+                    onClick={() => handleEdit(product.id)}
+                    style={{
+                      backgroundColor: "white",
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      padding: "10px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    Edit
+                  </button>
                 </td>
               </tr>
             ))}
@@ -142,7 +184,9 @@ const MainOrderPage = () => {
       {showMissingPopup && (
         <MissingPopup
           onClose={() => setShowMissingPopup(null)}
-          onMarkMissing={(urgent) => handleMarkMissingProduct(showMissingPopup.productId, urgent)}
+          onMarkMissing={(urgent) =>
+            handleMarkMissingProduct(showMissingPopup.productId, urgent)
+          }
         />
       )}
     </MainOrderDiv>
@@ -152,20 +196,18 @@ const MainOrderPage = () => {
 export default MainOrderPage;
 
 const MainOrderDiv = styled.div`
-  // Add your global styles here
   .detail {
-    padding:20px;
-    border-radius:10px;
+    padding: 20px;
+    border-radius: 10px;
     /* padding-right:"20px"; */
-    text-align:center;
+    text-align: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-   }
+  }
   .order-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-   
 
     h1 {
       font-size: 24px;
@@ -196,7 +238,7 @@ const MainOrderDiv = styled.div`
   }
 
   .product-table {
-    text-align:center;
+    text-align: center;
     h2 {
       font-size: 20px;
       font-weight: bold;
@@ -206,9 +248,11 @@ const MainOrderDiv = styled.div`
     table {
       width: 100%;
       border-collapse: collapse;
-td {
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
+      td {
+        text-align: center;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+      }
       th,
       td {
         border: 1px solid #ddd;
@@ -217,17 +261,17 @@ td {
       }
 
       th {
-        text-align :center;
+        text-align: center;
         background-color: #f2f2f2;
-        font-size:20px;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        font-size: 20px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
       }
 
       button {
-        border:"0px solid white";
+        border: "0px solid white";
         margin-right: 5px;
         cursor: pointer;
-        
       }
     }
   }
