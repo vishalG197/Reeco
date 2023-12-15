@@ -3,8 +3,7 @@ Reeco is a responsive e-commerce platform that streamlines order management, all
 
 # Reeco App
 
-Frontend: https://reeco-blush-two.vercel.app
-
+Frontend: https://reeco-vishalg197.vercel.app/
 ## Table of Contents
 
 - [Introduction](#introduction)
