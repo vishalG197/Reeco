@@ -38,7 +38,6 @@ Implement a user interface that allows users to view orders, update product stat
 - Optional: Edit product details (price, quantity, reason)
 - Styled components for enhanced UI
 - Use of Redux Toolkit for state management
-- Mock backend API calls for data retrieval
 
 ## Technologies Used
 
